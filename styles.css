@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#grid {
+    margin: 0 auto;
+    margin: 20px 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app {
+    border: 3px solid black;
+    width: 600px;
+    height: 640px;
+    text-align: center;
+    vertical-align: center;
+    margin: auto;
+    position: relative;
+    margin-top: 20px;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
