@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
 }
 
 #grid {
@@ -10,13 +11,26 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: linear-gradient(to bottom, rgba(86, 86, 255, 0.315), white, rgba(0, 128, 0, 0.671));
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+button {
+    font-size: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px;
+    border: 2px solid black;
 }
 
 .app {
     border: 3px solid black;
+    background-color: white;
     width: 600px;
-    height: 640px;
+    height: 740px;
     text-align: center;
     vertical-align: center;
     margin: auto;
@@ -30,3 +44,21 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.heading {
+    font-family: 'Odibee Sans', "Raleway";
+    font-size: 40px;
+    letter-spacing: .15em;
+}
+
+.button-container {
+    flex-flow: wrap;
+}
+
+/* #color-picker {
+    height: 80px;
+    width: 80px;
+    border: none;
+    order: 1;
+    flex: 1;
+} */

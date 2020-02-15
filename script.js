@@ -4,17 +4,35 @@ let squaresPerRow = 16;
 let squares;
 
 let randomColorsEnabled = false;
+let alphaEnabled = false;
 
 const randomColorButton = document.getElementById("random-color");
-// Displays whether the random color mode is on or off
 const randomColorDisplay = document.getElementById("random-color-display")
 
+const alphaButton = document.getElementById("alpha");
+const alphaDisplay = document.getElementById("alpha-display");
+
+alphaButton.addEventListener("click", toggleAlpha);
 randomColorButton.addEventListener("click", toggleRandomColors);
 
 function toggleRandomColors() {
     randomColorsEnabled = !randomColorsEnabled;
-    if (randomColorsEnabled) randomColorDisplay.textContent = "Enabled";
-    else randomColorDisplay.textContent = "Disabled"
+
+    if (randomColorsEnabled) {
+        randomColorDisplay.textContent = "On";
+    }
+    else {
+        randomColorDisplay.textContent = "Off"
+    }
+}
+
+function toggleAlpha() {
+    alphaEnabled = !alphaEnabled;
+    if (alphaEnabled) {
+        alphaDisplay.textContent = "On"
+    } else {
+        alphaDisplay.textContent = "Off"
+    }
 }
 
 grid.style.cssText = `
@@ -25,7 +43,7 @@ grid.style.cssText = `
 const resetButton = document.getElementById("reset");
 
 const colorPicker = document.getElementById("color-picker");
-let color = "rgba(0,0,0,1)";
+let color = "rgb(0,0,0)";
 colorPicker.addEventListener("change", changeColor);
 
 function changeColor(e) {
@@ -76,7 +94,7 @@ function generateOneSquare(gridSize, squaresPerRow) {
         display: inline-block;
         vertical-align: top;
         border-radius: ${squareSize/10}px;
-        background-color: rgba(0,0,0,0);
+        background-color: rgb(255,255,255);
     `
     return square;
 }
@@ -87,14 +105,27 @@ function hoverHandler(e) {
 }
 
 function colorSquare(e) {
+
     if (randomColorsEnabled) {
         const rValue = Math.floor(Math.random()*255);
         const gValue = Math.floor(Math.random()*255);
         const bValue = Math.floor(Math.random()*255);
-        e.target.style.backgroundColor = `rgb(${rValue},${gValue},${bValue}, 1)`;
+        e.target.style.backgroundColor = `rgb(${rValue},${gValue},${bValue})`;
     } else {
         e.target.style.backgroundColor = color;
     } 
+
+    console.log(e.target.style);
+
+    if (alphaEnabled) {
+        const originalOpacity = e.target.style.opacity || 1;
+        console.log(originalOpacity);
+        e.target.style.opacity = originalOpacity - .1;
+        console.log(e.target.style.opacity);
+    } else {
+        e.target.style.opacity = 1;
+    }
+
 }
 
 function clickHandler(e) {
